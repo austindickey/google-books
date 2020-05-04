@@ -1,7 +1,8 @@
 import React from "react"
 import Container from "./Container"
+import TitleDiv from "./TitleDiv"
 
-class ShowSaved extends React.Component {
+class BookSearch extends React.Component {
     state = {
 
     }
@@ -10,7 +11,7 @@ class ShowSaved extends React.Component {
         return (
             <Container>
                 <div className="contentHolder">
-
+                    <TitleDiv/>
                     <h1>Saved Page</h1>
 
                 </div>
@@ -19,4 +20,4 @@ class ShowSaved extends React.Component {
     }
 }
 
-export default ShowSaved
+export default BookSearch

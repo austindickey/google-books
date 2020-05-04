@@ -6,6 +6,10 @@ body {
     background-image: url(../img/bg.png);
 }
 
+.contentHolder {
+    min-height: calc(100vh - 209px);
+}
+
 /* =================================
             NavBar
 ================================= */
@@ -24,20 +28,25 @@ body {
     color: #F66363;
 }
 
+.navbar-nav .active {
+    color: #F66363;
+}
+
+.logo img {
+    padding: 5px 15px;
+    height: 60px;
+}
+
 /* =================================
             Main Content
 ================================= */
 
-.jumbotron {
-    background-image: url(../img/skyline.jpeg);
-    height: 536px;
-    color: #fff;
-    border-radius: 0;
-    margin-bottom: 0;
-}
-
-.contentHolder {
-    height: 886px;
+.titleDiv {
+    background-image: url(../img/banner.png);
+    margin: 50px 0;
+    padding: 35px 0;
+    border: 5px solid #525252;
+    border-radius: 8px;
 }
 
 /* =================================
