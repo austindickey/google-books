@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 function Navbar() {
   return (
@@ -7,8 +8,12 @@ function Navbar() {
         Logo {/* <img src={window.location.origin + "/img/logo.png"} alt="Logo"/> */}
       </a>
       <div className="navbar-nav">
-        <a className="nav-item nav-link active" href="/">Home</a>
-        <a className="nav-item nav-link" href="/saved">Saved</a>
+        <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+          Home
+        </Link>
+        <Link to="/saved" className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}>
+          Saved
+        </Link>
       </div>
     </nav>
   )

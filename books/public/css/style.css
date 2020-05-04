@@ -15,6 +15,15 @@ body {
     color: #fff;
 }
 
+.navbar-nav a {
+    color: #fff;
+}
+
+.navbar-nav a:hover {
+    text-decoration: none;
+    color: #F66363;
+}
+
 /* =================================
             Main Content
 ================================= */

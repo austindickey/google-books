@@ -1,7 +1,7 @@
 import React from "react"
 import Container from "./Container"
 
-class BookDisplay extends React.Component {
+class ShowSaved extends React.Component {
     state = {
 
     }
@@ -9,10 +9,14 @@ class BookDisplay extends React.Component {
     render() {
         return (
             <Container>
-                <div className="contentHolder"></div>
+                <div className="contentHolder">
+
+                    <h1>Saved Page</h1>
+
+                </div>
             </Container>
         )
     }
 }
 
-export default BookDisplay
+export default ShowSaved
