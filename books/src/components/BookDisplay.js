@@ -9,7 +9,7 @@ class BookDisplay extends React.Component {
     render() {
         return (
             <Container>
-                
+                <div className="contentHolder"></div>
             </Container>
         )
     }
