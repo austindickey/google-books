@@ -1,6 +1,8 @@
 import React from "react"
 import Container from "./Container"
 import TitleDiv from "./TitleDiv"
+import SearchBar from "./SearchBar"
+import Results from "./Results"
 
 class BookSearch extends React.Component {
     state = {
@@ -12,7 +14,8 @@ class BookSearch extends React.Component {
             <Container>
                 <div className="contentHolder">
                     <TitleDiv/>
-                    <h1>Home Page</h1>
+                    <SearchBar/>
+                    <Results header="Search Results"/>
 
                 </div>
             </Container>

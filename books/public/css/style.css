@@ -41,12 +41,41 @@ body {
             Main Content
 ================================= */
 
-.titleDiv {
+.titleDiv,
+#searchBox,
+.results {
     background-image: url(../img/banner.png);
     margin: 50px 0;
     padding: 35px 0;
     border: 5px solid #525252;
     border-radius: 8px;
+}
+
+#searchBox,
+.results {
+    margin: 0;
+    margin-bottom: 50px;
+    padding: 35px 50px;
+    text-align: center;
+}
+
+#searchBox form,
+#searchBox .form-inline,
+#searchBox .form-group {
+    width: 100%;
+}
+
+#bookName {
+    width: 80%;
+    margin: 25px auto;
+} 
+
+#bookSearchButton {
+    margin: auto;
+}
+
+.btn-danger {
+    background-color: #F66363;
 }
 
 /* =================================
