@@ -1,17 +1,22 @@
 import React from 'react'
 
-function SearchBar () {
-    return (
-        <div id="searchBox">
-            <h3>Search for a Book</h3>
-            <form class="form-inline">
-                <div class="form-group mb-2">
-                    <input type="password" class="form-control" id="bookName" placeholder="Book Name"/>
-                </div>
-                <button type="submit" class="btn btn-danger mb-2" id="bookSearchButton">Search</button>
-            </form>
-        </div>
-    )
-}
+export default class SearchBar extends React.Component {
+    state = {
+        loading: true
+    }
+    
+    async componentDidMount() {
+        const url = "https://www.googleapis.com/books/v1/volumes?q=boss"
+        const response = await fetch(url)
+        const data = await response.json()
+        console.log(data)
+    }
 
-export default SearchBar
+    render() {
+        return (
+            <div>
+                {this.state.loading ? <div>loading...</div> : <div>person...</div>}
+            </div>
+        )
+    }
+}
