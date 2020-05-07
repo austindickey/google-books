@@ -7,7 +7,7 @@ body {
 }
 
 .contentHolder {
-    min-height: calc(100vh - 209px);
+    min-height: calc(100vh - 251px);
 }
 
 /* =================================
@@ -81,6 +81,7 @@ body {
 #results {
     border: 5px solid #525252;
     border-radius: 8px;
+    margin-bottom: 50px;
 }
 
 #results a {
@@ -92,8 +93,14 @@ body {
     text-decoration: none;
 }
 
+#results,
 #results li {
     background-image: url(../img/banner.png);
+}
+
+#noResults {
+    padding: 50px 0;
+    text-align: center;
 }
 
 #results li img {

@@ -42,25 +42,30 @@ class BookSearch extends React.Component {
                         </form>
                         <button className="btn btn-danger mb-2" id="bookSearchButton" onClick={() => this.apiCall()}>Search</button>
                     </div>
-                    <Results>
-                        {bookList.map((book, i) => {
-                            let formattedDate = Moment(book.volumeInfo.publishedDate).format("MMMM Do, YYYY")
+                    {!bookList.length ? (
+                        <Results>
+                            <h3 id="noResults">No Books to Display</h3>
+                        </Results>
+                    ) : (
+                            <Results>
+                                {bookList.map((book, i) => {
+                                    let formattedDate = Moment(book.volumeInfo.publishedDate).format("MMMM Do, YYYY")
 
-                        return (
-                            <SingleResult
-                                key={i}
-                                bookLink={book.volumeInfo.infoLink}
-                                title={book.volumeInfo.title}
-                                subtitle={book.volumeInfo.subtitle}
-                                authors={book.volumeInfo.authors.join(", ")}
-                                publishDate={formattedDate}
-                                bookImg={book.volumeInfo.readingModes.image ? book.volumeInfo.imageLinks.smallThumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"}
-                                description={book.volumeInfo.description}
-                            />
-                            )
-                        })}
-                    </Results>
-
+                                    return (
+                                        <SingleResult
+                                            key={i}
+                                            bookLink={book.volumeInfo.infoLink}
+                                            title={book.volumeInfo.title}
+                                            subtitle={book.volumeInfo.subtitle}
+                                            authors={book.volumeInfo.authors.join(", ")}
+                                            publishDate={formattedDate}
+                                            bookImg={book.volumeInfo.readingModes.image ? book.volumeInfo.imageLinks.smallThumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"}
+                                            description={book.volumeInfo.description}
+                                        />
+                                    )
+                                })}
+                            </Results>
+                        )}
                 </div>
             </Container>
         )
