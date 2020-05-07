@@ -3,6 +3,7 @@ import Container from "./Container"
 import TitleDiv from "./TitleDiv"
 // import SearchBar from "./SearchBar"
 import { Results, SingleResult } from "./Results"
+import Moment from "moment"
 
 class BookSearch extends React.Component {
     state = {
@@ -10,8 +11,8 @@ class BookSearch extends React.Component {
         bookSearch: ""
     }
 
-    async componentDidMount() {
-        const url = "https://www.googleapis.com/books/v1/volumes?q=boss"
+    async apiCall() {
+        const url = `https://www.googleapis.com/books/v1/volumes?q=${this.state.bookSearch}`
         const response = await fetch(url)
         const data = await response.json()
         const books = data.items
@@ -23,14 +24,6 @@ class BookSearch extends React.Component {
         this.setState({
             [name]: value
         })
-    }
-
-    async handleFormSubmit () {
-        const url = `https://www.googleapis.com/books/v1/volumes?q=${this.state.bookSearch}`
-        const response = await fetch(url)
-        const data = await response.json()
-        const books = data.items
-        this.setState({books})
     }
 
     render() {
@@ -47,16 +40,22 @@ class BookSearch extends React.Component {
                                 <input type="text" name="bookSearch" value={this.state.bookSearch} onChange={(event) => this.handleInputChange(event)} className="form-control" id="bookName" placeholder="Book Name" />
                             </div>
                         </form>
-                        <button className="btn btn-danger mb-2" id="bookSearchButton" onClick={() => this.handleFormSubmit()}>Search</button>
+                        <button className="btn btn-danger mb-2" id="bookSearchButton" onClick={() => this.apiCall()}>Search</button>
                     </div>
-                    <div>{bookList.title}</div>
                     <Results>
                         {bookList.map((book, i) => {
+                            let formattedDate = Moment(book.volumeInfo.publishedDate).format("MMMM Do, YYYY")
 
                         return (
                             <SingleResult
                                 key={i}
+                                bookLink={book.volumeInfo.infoLink}
                                 title={book.volumeInfo.title}
+                                subtitle={book.volumeInfo.subtitle}
+                                authors={book.volumeInfo.authors.join(", ")}
+                                publishDate={formattedDate}
+                                bookImg={book.volumeInfo.readingModes.image ? book.volumeInfo.imageLinks.smallThumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"}
+                                description={book.volumeInfo.description}
                             />
                             )
                         })}

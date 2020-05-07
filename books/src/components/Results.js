@@ -1,31 +1,26 @@
 import React from 'react'
 
-// function Results (props) {
-//     return (
-//         <div className="results">
-//             <h3>{props.header}</h3>
-
-//         </div>
-//     )
-// }
-
-// export default Results
-
-
-// Exporting both RecipeList and RecipeListItem from this file
-
-// RecipeList renders a bootstrap list item
 export function Results({ children }) {
-    return <ul className="list-group">{children}</ul>;
-  }
-  
-  // RecipeListItem renders a bootstrap list item containing data from the recipe api call
-  export function SingleResult({
-    title
-  }) {
+    return <ul id="results" className="list-group">{children}</ul>
+}
+
+export function SingleResult({
+    bookImg,
+    title,
+    bookLink,
+    description,
+    authors,
+    subtitle,
+    publishDate
+}) {
     return (
-      <li className="list-group-item">
-        <h3>{title}</h3>
-      </li>
-    );
-  }
+        <li className="list-group-item">
+            <a href={bookLink} target="_blank" rel="noopener noreferrer"><h3>{title}</h3></a>
+            <p className="subtitle">{subtitle}</p>
+            <p><span>Author(s): </span>{authors}</p>
+            <p><span>Published Date: </span>{publishDate}</p>
+            <a href={bookLink} target="_blank" rel="noopener noreferrer"><img src={bookImg} alt="Book Pic" /></a>
+            <p><span>Description: </span>{description}</p>
+        </li>
+    )
+}

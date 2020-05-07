@@ -78,6 +78,40 @@ body {
     background-color: #F66363;
 }
 
+#results {
+    border: 5px solid #525252;
+    border-radius: 8px;
+}
+
+#results a {
+    color: #000;
+}
+
+#results a:hover {
+    color: #F66363;
+    text-decoration: none;
+}
+
+#results li {
+    background-image: url(../img/banner.png);
+}
+
+#results li img {
+    float: left;
+    width: 128px;
+    margin: 5px 15px 15px 0;
+}
+
+#results span {
+    font-style: italic;
+    color: #F66363;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-style: italic;
+}
+
 /* =================================
             Footer
 ================================= */
