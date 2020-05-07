@@ -4,6 +4,8 @@ import TitleDiv from "./TitleDiv"
 import { Results, SingleResult } from "./Results"
 import Moment from "moment"
 
+const db = require("../models")
+
 class BookSearch extends React.Component {
     state = {
         books: [],
@@ -24,6 +26,19 @@ class BookSearch extends React.Component {
             [name]: value
         })
     }
+
+    saveBook() {
+        console.log("firing")
+        db.Book.create()
+            .then(function(data){
+                console.log(data)
+            })
+            .catch(function(err){
+                if (err) throw err
+            })
+    }
+
+
 
     render() {
         let bookList = this.state.books
@@ -60,6 +75,8 @@ class BookSearch extends React.Component {
                                             publishDate={formattedDate}
                                             bookImg={book.volumeInfo.readingModes.image ? book.volumeInfo.imageLinks.smallThumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"}
                                             description={book.volumeInfo.description}
+                                            btnText={"Save"}
+                                            btnClassNames={"btn btn-danger saveBook"}
                                         />
                                     )
                                 })}
