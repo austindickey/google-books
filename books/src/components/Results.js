@@ -21,6 +21,7 @@ export function SingleResult({
             <p><span>Published Date: </span>{publishDate}</p>
             <a href={bookLink} target="_blank" rel="noopener noreferrer"><img src={bookImg} alt="Book Pic" /></a>
             <p><span>Description: </span>{description}</p>
+            <button className="btn btn-danger saveBook">Save</button>
         </li>
     )
 }

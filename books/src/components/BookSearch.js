@@ -1,7 +1,6 @@
 import React from "react"
 import Container from "./Container"
 import TitleDiv from "./TitleDiv"
-// import SearchBar from "./SearchBar"
 import { Results, SingleResult } from "./Results"
 import Moment from "moment"
 
@@ -57,7 +56,7 @@ class BookSearch extends React.Component {
                                             bookLink={book.volumeInfo.infoLink}
                                             title={book.volumeInfo.title}
                                             subtitle={book.volumeInfo.subtitle}
-                                            authors={book.volumeInfo.authors.join(", ")}
+                                            authors={book.volumeInfo.authors === undefined ? "No Listed Authors" : book.volumeInfo.authors.join(", ")}
                                             publishDate={formattedDate}
                                             bookImg={book.volumeInfo.readingModes.image ? book.volumeInfo.imageLinks.smallThumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"}
                                             description={book.volumeInfo.description}

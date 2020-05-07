@@ -119,6 +119,12 @@ body {
     font-style: italic;
 }
 
+.saveBook {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
 /* =================================
             Footer
 ================================= */
