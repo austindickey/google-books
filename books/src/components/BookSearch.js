@@ -3,8 +3,14 @@ import Container from "./Container"
 import TitleDiv from "./TitleDiv"
 import { Results, SingleResult } from "./Results"
 import Moment from "moment"
+import axios from "axios"
+import mongoose from "mongoose"
+// const mongoose = require("mongoose")
+const dbConnection = mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks")
 
-const db = require("../models")
+// import booksController from "../controllers/booksController"
+
+// const db = require("../models")
 
 class BookSearch extends React.Component {
     state = {
@@ -27,22 +33,21 @@ class BookSearch extends React.Component {
         })
     }
 
-    saveBook() {
+    saveBook(i) {
         console.log("firing")
-        db.Book.create()
-            .then(function(data){
-                console.log(data)
-            })
-            .catch(function(err){
-                if (err) throw err
-            })
+        // db.Book.insert(this.state.books[i])
+        //     .then(function(data){
+        //         console.log(data)
+        //     })
+        //     .catch(function(err){
+        //         if (err) throw err
+        //     })
+        axios.post(dbConnection, this.state.books[i])
     }
-
-
 
     render() {
         let bookList = this.state.books
-        console.log("Book List: ", bookList)
+        // console.log("Book List: ", bookList)
         return (
             <Container>
                 <div className="contentHolder">
@@ -77,6 +82,7 @@ class BookSearch extends React.Component {
                                             description={book.volumeInfo.description}
                                             btnText={"Save"}
                                             btnClassNames={"btn btn-danger saveBook"}
+                                            clickFunc={() => this.saveBook(i)}
                                         />
                                     )
                                 })}

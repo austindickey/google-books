@@ -13,7 +13,8 @@ export function SingleResult({
     subtitle,
     publishDate,
     btnText,
-    btnClassNames
+    btnClassNames,
+    clickFunc
 }) {
     return (
         <li className="list-group-item">
@@ -23,7 +24,7 @@ export function SingleResult({
             <p><span>Published Date: </span>{publishDate}</p>
             <a href={bookLink} target="_blank" rel="noopener noreferrer"><img src={bookImg} alt="Book Pic" /></a>
             <p><span>Description: </span>{description}</p>
-            <button className={btnClassNames} onClick={() => this.saveBook()}>{btnText}</button>
+            <button className={btnClassNames} onClick={clickFunc}>{btnText}</button>
         </li>
     )
 }
