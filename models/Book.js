@@ -10,7 +10,6 @@ const bookSchema = new Schema({
   description: String,
   bookImg: String,
   publishedDate: { type: String, required: true },
-  saved: {type: Boolean, default: false},
   addedDate: { type: Date, default: Date.now }
 })
 

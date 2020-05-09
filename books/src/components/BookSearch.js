@@ -3,10 +3,10 @@ import Container from "./Container"
 import TitleDiv from "./TitleDiv"
 import { Results, SingleResult } from "./Results"
 import Moment from "moment"
-import axios from "axios"
-import mongoose from "mongoose"
+// import axios from "axios"
+// import mongoose from "mongoose"
 // const mongoose = require("mongoose")
-const dbConnection = mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks")
+// const dbConnection = mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks")
 
 // import booksController from "../controllers/booksController"
 
@@ -19,10 +19,10 @@ class BookSearch extends React.Component {
     }
 
     async apiCall() {
-        const url = `https://www.googleapis.com/books/v1/volumes?q=${this.state.bookSearch}`
+        const url = `/api/${this.state.bookSearch}`
         const response = await fetch(url)
         const data = await response.json()
-        const books = data.items
+        const books = data
         this.setState({books})
     }
 
@@ -33,21 +33,27 @@ class BookSearch extends React.Component {
         })
     }
 
-    saveBook(i) {
-        console.log("firing")
-        // db.Book.insert(this.state.books[i])
-        //     .then(function(data){
-        //         console.log(data)
-        //     })
-        //     .catch(function(err){
-        //         if (err) throw err
-        //     })
-        axios.post(dbConnection, this.state.books[i])
+    saveBook(book) {
+        const data = {
+            bookLink: book.volumeInfo.infoLink,
+            title: book.volumeInfo.title,
+            subtitle: book.volumeInfo.subtitle,
+            authors: book.volumeInfo.authors === undefined ? "No Listed Authors" : book.volumeInfo.authors.join(", "),
+            description: book.volumeInfo.description,
+            bookImg: book.volumeInfo.readingModes.image ? book.volumeInfo.imageLinks.smallThumbnail : "https://books.google.com/googlebooks/images/no_cover_thumb.gif",
+            publishedDate: Moment(book.volumeInfo.publishedDate).format("MMMM Do, YYYY"),
+        }
+        fetch("/api", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
     }
 
     render() {
         let bookList = this.state.books
-        // console.log("Book List: ", bookList)
         return (
             <Container>
                 <div className="contentHolder">
@@ -82,7 +88,7 @@ class BookSearch extends React.Component {
                                             description={book.volumeInfo.description}
                                             btnText={"Save"}
                                             btnClassNames={"btn btn-danger saveBook"}
-                                            clickFunc={() => this.saveBook(i)}
+                                            clickFunc={() => this.saveBook(book)}
                                         />
                                     )
                                 })}

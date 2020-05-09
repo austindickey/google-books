@@ -119,7 +119,8 @@ body {
     font-style: italic;
 }
 
-.saveBook {
+.saveBook,
+.deleteBook {
     position: absolute;
     top: 15px;
     right: 15px;

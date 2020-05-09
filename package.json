@@ -1,0 +1,26 @@
+{
+  "name": "google-books",
+  "version": "1.0.0",
+  "description": "This is a site for viewing all the books on google books website",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.13",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austindickey/google-books.git"
+  },
+  "author": "Austin Dickey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/austindickey/google-books/issues"
+  },
+  "homepage": "https://github.com/austindickey/google-books#readme"
+}
