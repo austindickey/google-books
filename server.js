@@ -4,14 +4,14 @@ const routes = require("./routes/apiRoutes")
 const app = express()
 const PORT = process.env.PORT || 3001
 
-// Define middleware here
+// Middleware
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-// Serve up static assets (usually on heroku)
+// Serve up static assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("books/build"))
 }
-// Add routes, both API and view
+// Api Routes
 app.use(routes)
 
 // Connect to the Mongo DB

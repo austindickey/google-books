@@ -3,8 +3,6 @@ import Container from "./Container"
 import TitleDiv from "./TitleDiv"
 import { Results, SingleResult } from "./Results"
 
-// const db = require("../models")
-
 class BookSearch extends React.Component {
 
     state = {
