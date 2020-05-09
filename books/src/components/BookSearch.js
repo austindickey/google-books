@@ -3,14 +3,6 @@ import Container from "./Container"
 import TitleDiv from "./TitleDiv"
 import { Results, SingleResult } from "./Results"
 import Moment from "moment"
-// import axios from "axios"
-// import mongoose from "mongoose"
-// const mongoose = require("mongoose")
-// const dbConnection = mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks")
-
-// import booksController from "../controllers/booksController"
-
-// const db = require("../models")
 
 class BookSearch extends React.Component {
     state = {

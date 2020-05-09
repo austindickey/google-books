@@ -24,6 +24,14 @@ class BookSearch extends React.Component {
         this.showSaved()
     }
 
+    deleteBook(book) {
+        fetch(`/api/${book._id}`, {
+            method: "POST"
+        }).then(()=> {
+            this.showSaved()
+        })
+    }
+
     render() {
         const bookList = this.state.books
         return (
@@ -51,7 +59,7 @@ class BookSearch extends React.Component {
                                             description={book.description}
                                             btnText={"Delete"}
                                             btnClassNames={"btn btn-danger deleteBook"}
-                                            // clickFunc={() => this.saveBook(book)}
+                                            clickFunc={() => this.deleteBook(book)}
                                         />
                                     )
                                 })}

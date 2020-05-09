@@ -19,6 +19,8 @@ router.get("/api/:search", apiCall)
 
 router.post("/api", controller.create)
 
+router.post("/api/:id", controller.remove)
+
 router.get("/saved", controller.findAll)
 
 module.exports = router
