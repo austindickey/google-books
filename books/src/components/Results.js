@@ -18,7 +18,7 @@ export function SingleResult({
 }) {
     return (
         <li className="list-group-item">
-            <a href={bookLink} target="_blank" rel="noopener noreferrer"><h3>{title}</h3></a>
+            <a href={bookLink} target="_blank" rel="noopener noreferrer"><h3 className="title">{title}</h3></a>
             <p className="subtitle">{subtitle}</p>
             <p><span>Author(s): </span>{authors}</p>
             <p><span>Published Date: </span>{publishDate}</p>
